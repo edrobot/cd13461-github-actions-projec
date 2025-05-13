@@ -38,7 +38,7 @@ jobs:
 
         #TODO: Run all scripts in folder script/**
         - name: run scripts
-          run: node url-checker.js -t $URL_CHECKER_TIMEOUT -p src/posts
+          run: node script/url-checker.js -t $URL_CHECKER_TIMEOUT -p src/posts
         #TODO: Implement URL_CHECKER_TIMEOUT variable
 
     #build: #TODO: Build Job
