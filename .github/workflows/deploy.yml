@@ -60,7 +60,7 @@ jobs:
           uses: actions/configure-pages@v4
         #Build Pages with Elevendy
         - name: Build Static Pages
-          run: eleventy:prod
+          run: node eleventy:prod
           env: 
             PATH_PREFIX: ${{ vars.PATH_PREFIX }}
         #Upload content of _site as an artifact
