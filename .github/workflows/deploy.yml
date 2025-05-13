@@ -1,0 +1,53 @@
+name: Workflow
+
+run-name: CorpX Workflow
+
+on:
+    # Trigger Events
+    push:
+        branches:
+            -main
+        paths-ignore:
+            - ".gitignore"
+            - "README.md"
+            - "CONTRIBUTING.md"
+            - "LICENSE.txt"
+
+    pull_request:
+        branches:
+            - main
+jobs:
+    test:
+        #TODO: Setup Node + Dependencies
+        runs-on: ubuntu-latest
+
+        steps:
+        - uses: actions/checkout@v4
+        - name: Use Node.js
+          uses: actions/setup-node@v4
+          with:
+            node-version: '18.x'
+        - name: install dependencies
+          run: npm ci
+
+        #TODO: Run all the Linters
+        - name: run linters
+          run: npm run lint:all
+
+        #TODO: Run all scripts in folder script/**
+        - name: run scripts
+          run: node url-checker.js -t $URL_CHECKER_TIMEOUT -p src/posts
+        #TODO: Implement URL_CHECKER_TIMEOUT variable
+
+    #build: #TODO: Build Job
+    #deploy: #TODO: Deploy Job
+
+    #TODO: Force Deployment Option
+
+    #TODO: Limit of 1 Runs
+
+    
+
+    
+
+    
